@@ -1,15 +1,18 @@
 import React from "react";
 import style from "./Botao.module.scss"
 
-class Botao extends React.Component<{type?: "button" | "submit" | "reset" | undefined}>{
-    render(){
-        const {type = "button"} = this.props
-        return(
-            <button type={type} className={style.botao}>
-                {this.props.children}
-            </button>
-        )
-    }
+interface Props{
+    onClick?: () => void,
+    type?:"button" | "submit" | "reset" | undefined,
+    children: React.ReactNode
+}
+
+function Botao({onClick, type, children}: Props){
+    return(
+        <button type={type} className={style.botao} onClick={onClick}>
+            {children}
+        </button>
+    )
 }
 
 export default Botao;
